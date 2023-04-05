@@ -18,7 +18,7 @@ public class Libro {
 
 	/**
 	 * enumerado que guardara constantes como posibles valores para variable tipo
-	 * Genero (cada una seria un objeto)
+	 * Genero (cada variable seria un objeto)
 	 */
 	enum Genero {
 		NARRATIVO, LÍRICO, DRAMÁMATICO, DIDÁCTICO, POÉTICO
@@ -40,8 +40,17 @@ public class Libro {
 	 * 
 	 * @param genero contendra valor a asignar a atributo genero
 	 */
+
 	public void setGenero(Genero genero) {
-		this.genero = genero;
+		// hago un for each que recorra los valores del enumerado Genero guardando el
+		// valor actual en g
+		for (Genero g : Genero.values()) {
+			// si g es igual a parametro de entrada genero
+			if (g.equals(genero)) {
+				// doy a atributo genero valor de parametro de entrada genero
+				this.genero = genero;
+			}
+		}
 	}
 
 	/**
@@ -66,7 +75,7 @@ public class Libro {
 	 *                              de libro ejemplaresDisponibles
 	 * @param ejemplaresPrestados   proovera valor para guardar cantidad prestada
 	 *                              del libro ejemplaresPrestados
-	 * @param genero                proovera valor para el el sexo del titular
+	 * @param genero                proovera valor para el el genero del libro
 	 */
 	public Libro(String titulo, String autor, int ejemplaresDisponibles, int ejemplaresPrestados, Genero genero) {
 
@@ -75,6 +84,7 @@ public class Libro {
 		this.ejemplaresDisponibles = ejemplaresDisponibles;
 		this.ejemplaresPrestados = ejemplaresPrestados;
 		this.ejemplaresPrestados = ejemplaresPrestados;
+		this.genero = genero;
 	}
 
 	/**
@@ -115,12 +125,16 @@ public class Libro {
 		return devolver;
 	}
 
+	/**
+	 * metodo que devolvera un cadena con los valores de los atributos del objeto
+	 * con el que se le llama
+	 */
 	public String toString() {
 
 		String datosLibro = "";
 
-		datosLibro = "Titulo:" + titulo + " " + "autor:" + autor + " " + "ejemplaresDisponibles:" + ejemplaresDisponibles
-				+ " " + "ejemplaresPrestados:" + ejemplaresPrestados + " " + "genero:" + genero;
+		datosLibro = "Titulo:" + titulo + " " + "autor:" + autor + " " + "ejemplaresDisponibles:"
+				+ ejemplaresDisponibles + " " + "ejemplaresPrestados:" + ejemplaresPrestados + " " + "genero:" + genero;
 
 		return datosLibro;
 	}

@@ -2,98 +2,177 @@ package ejercicio2;
 
 import java.util.Scanner;
 
+import ejercicio2.Libro.Genero;
+
 public class Main {
 
-	//LOS ERRORES SE DEEBN A CAMB
 	public static void main(String[] args) {
 
-		int opcion = 0;// guardara la opcion seleccionada por el usuario
+		String titulo = "";// guardara titulo para pasar como parametro de entrada al constructor
+		String autor = "";// guardara autor para pasar como parametro de entrada al constructor
+		int ejemplaresDisponibles;// guardara ejemplaresDisponibles para pasar como parametro de entrada al
+									// constructor
+		int ejemplaresPrestados;// guardara ejemplaresPrestados para pasar como parametro de entrada al
+								// constructor
+		String genero = "";// guardara genero para pasar como parametro de entrada al constructor
+		boolean esta = false;// guardara true o false segun este el genero en la lista de enumerados o no,
+								// inicializo a false poruqe compruebo si SI ESTA
 
 		// creo escaner y lo nombro dogma
 		Scanner dogma = new Scanner(System.in);
 
-		//  creo nuevo objeto tipo Libro y lo asigno a la variable libro  y lo inicializo con valores concretos
-		Libro libro = new Libro("Los nacidos de la bruma", "Brandon sanderson", 10, 0);
+		// solicito titulo al usuario
+		System.out.println("Introduzca el titulo del libro:");
+		// recojo valor de usuario con escaner y lo asigno a titulo
+		titulo = dogma.nextLine();
 
-		// hago lo mismo para objeto diferente (libro2) que contara con valores
-		// diferentes para sus atributos al ser un objeto diferente
-		Libro libro2 = new Libro("Elantris", "Brandon sanderson", 20, 2);
+		// solicito autor al usuario
+		System.out.println("Introduzca el autor del libro:");
+		// recojo valor de usuario con escaner y lo asigno a titulo
+		autor = dogma.nextLine();
 
-		// bucle que se ejecutara mientras opcion sea diferente a 3 comprobando
-		// funcionamiento de clases con objeto libro
-		while (opcion != 3) {
+		// solicito ejemplaresDisponibles al usuario
+		System.out.println("Introduzca numero de ejemplares Disponibles del libro:");
+		// recojo valor de usuario con escaner y lo asigno a ejemplaresDisponibles
+		ejemplaresDisponibles = dogma.nextInt();
 
-			// solicito seleccion de opcion a usuario
-			System.out.println("Seleccione una opcion: \n1.Pedir prestado un libro. \n2.Devolver un libro.\n3.Salir.");
-			// recojo valor introducido por usuario con escaner y lo asigno a opcion
-			opcion = dogma.nextInt();
-			// hago un switch que evalue a opcion
-			switch (opcion) {
+		// solicito ejemplaresPrestados al usuario
+		System.out.println("Introduzca numero de ejemplares Prestados del libro:");
+		// recojo valor de usuario con escaner y lo asigno a ejemplaresPrestados
+		ejemplaresPrestados = dogma.nextInt();
+		dogma.nextLine();
 
-			// de tener opcion valor 1
-			case 1 -> {
-				// llamo al metodo prestamo con el objeto libro, si este me devuelve true
-				if (libro.prestamo()) {
-					// comunico al usuario que el prestamo de su libro se ha realizado con mensaje
-					// por pantalla
-					System.out.println("Su prestamo del libro " + libro.titulo + " ha sido procesado con exito.");
+		// solicito genero al usuario
+		System.out.println("Introduzca el genero del libro:");
+		// recojo valor de usuario con escaner y lo asigno a genero
+		genero = dogma.nextLine();
 
-					// de lo contrario comunico al usuario que el prestamo de su libro no se ha
-					// realizado con mensaje por pantalla
-				} else {
-					System.out.println(
-							"Su prestamo no puede realizarse porque no hay ejemplares disponibles de " + libro.titulo);
-				}
-			}
-			// de tener opcion valor 1
-			case 2 -> {
-				// llamo al metodo devolucion con el objeto libro, si este me devuelve true
-				if (libro.devolucion()) {
-					// comunico al usuario que la devolucion de su libro se ha realizado con mensaje
-					// por pantalla
-					System.out.println("Su devolucion del libro " + libro.titulo + " ha sido procesada con exito.");
-
-					// de lo contrario comunico al usuario que la devolucion de su libro no se ha
-					// realizado con mensaje por pantalla
-				} else {
-					System.out.println("Su devolucion no puede realizarse porque no se ha prestado un ejemplar de "
-							+ libro.titulo + " previamente.");
-				}
-			}
+		// bucle for each que recorrera los valores de el enumerado Genero guardando
+		// estos en g
+		for (Genero g : Genero.values()) {
+			// si g es igual a parametro de entrada genero (aplico a genero valueOf para
+			// pasar su valor a tipo Genero)
+			if (g.equals(Genero.valueOf(genero))) {
+				// el genero especificado se encuentra en la lista de enumerados por lo que esta
+				// pasa a ser true
+				esta = true;
 			}
 		}
+		// si esta tiene valor false // el genero especificado no se encuentra en la
+		// lista de enumerados
+		if (esta == false) {
+			// lo comunico al usuario con mensaje de error
+			System.out.println("El genero especificado no se encuentra en la lista de los permitidos. ");
+		}
+		// creo objeto tipo Libro y lo asigno a la variable libro y uso
+		// constructor para darle valor a sus atributos con los argumentos recogidos del
+		// usuario con anterioridad
+		// (aplico a genero valueOf para pasar su valor a tipo Genero)
+		Libro libro = new Libro(titulo, autor, ejemplaresDisponibles, ejemplaresPrestados, Genero.valueOf(genero));
 
-		// si salgo del bucle anterior reinicio el valor de opcion a 0
-		opcion = 0;
+		/////////////////////////////////////////////////////////////////////////////////////////////////
 
-		// y entro en otro bucle para hacer lo mismo que en el anterior pero con el
-		// objeto libro2
-		while (opcion != 3) {
+		// hago lo mismo para objeto 2 (libro2)
+		System.out.println("Introduzca el titulo del libro:");
+		titulo = dogma.nextLine();
 
-			System.out.println("Seleccione una opcion: \n1.Pedir prestado un libro. \n2.Devolver un libro.\n3.Salir.");
-			opcion = dogma.nextInt();
-			switch (opcion) {
+		System.out.println("Introduzca el autor del libro:");
+		autor = dogma.nextLine();
 
-			case 1 -> {
-				if (libro2.prestamo()) {
-					System.out.println("Su prestamo del libro " + libro2.titulo + " ha sido procesado con exito.");
+		System.out.println("Introduzca numero de ejemplares Disponibles del libro:");
+		ejemplaresDisponibles = dogma.nextInt();
 
-				} else {
-					System.out.println(
-							"Su prestamo no puede realizarse porque no hay ejemplares disponibles de " + libro2.titulo);
-				}
-			}
-			case 2 -> {
-				if (libro2.devolucion()) {
-					System.out.println("Su devolucion del libro " + libro2.titulo + " ha sido procesada con exito.");
+		System.out.println("Introduzca numero de ejemplares Prestados del libro:");
+		ejemplaresPrestados = dogma.nextInt();
+		dogma.nextLine();
 
-				} else {
-					System.out.println("Su devolucion no puede realizarse porque no se ha prestado un ejemplar de "
-							+ libro2.titulo + " previamente.");
-				}
-			}
+		System.out.println("Introduzca el genero del libro:");
+		genero = dogma.nextLine();
+
+		for (Genero g : Genero.values()) {
+
+			if (g.equals(Genero.valueOf(genero))) {
+				esta = true;
 			}
 		}
+		if (esta == false) {
+			System.out.println("El genero especificado no se encuentra en la lista de los permitidos. ");
+		}
+
+		Libro libro2 = new Libro(titulo, autor, ejemplaresDisponibles, ejemplaresPrestados, Genero.valueOf(genero));
+
+		// llamo a la funcion que muestra los valores de los atributos del objeto con el
+		// que se la llama (libro)
+		System.out.println(libro.toString());
+
+		// llamo a la funcion que muestra los valores de los atributos del objeto con el
+		// que se la llama (libro2)
+		System.out.println(libro2.toString());
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////
+
+		System.out.println("Introduzca el nuevo genero del libro:");
+		genero = dogma.nextLine();
+
+		// bucle for each que recorrera los valores de el enumerado Genero guardando
+		// estos en g
+		for (Genero g : Genero.values()) {
+			// si g es igual a parametro de entrada genero (aplico a genero valueOf para
+			// pasar su valor a tipo Genero)
+			if (g.equals(Genero.valueOf(genero))) {
+				// el genero especificado se encuentra en la lista de enumerados por lo que esta
+				// pasa a ser true
+				esta = true;
+			}
+		}
+		// si esta tiene valor false // el genero especificado no se encuentra en la
+		// lista de enumerados
+		if (esta == false) {
+			// lo comunico al usuario con mensaje de error
+			System.out.println("El genero especificado no se encuentra en la lista de los permitidos. ");
+		}
+
+		// llamo al setter de genero de objeto libro y le paso genero como argumento
+		// (aplico a genero valueOf para pasar su valor a tipo Genero)
+		libro.setGenero(Genero.valueOf(genero));
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////
+
+		// solicito nuevo genero al usuario
+		System.out.println("Introduzca el nuevo genero del libro:");
+		// recojo valor de usuario con escaner y lo asigno a titulo
+		genero = dogma.nextLine();
+
+		// bucle for each que recorrera los valores de el enumerado Genero guardando
+		// estos en g
+		for (Genero g : Genero.values()) {
+			// si g es igual a parametro de entrada genero (aplico a genero valueOf para
+			// pasar su valor a tipo Genero)
+			if (g.equals(Genero.valueOf(genero))) {
+				// el genero especificado se encuentra en la lista de enumerados por lo que esta
+				// pasa a ser true
+				esta = true;
+			}
+		}
+		// si esta tiene valor false // el genero especificado no se encuentra en la
+		// lista de enumerados
+		if (esta == false) {
+			// lo comunico al usuario con mensaje de error
+			System.out.println("El genero especificado no se encuentra en la lista de los permitidos. ");
+		}
+
+		// llamo al setter de genero de objeto libro2 y le paso genero como argumento
+		// (aplico a genero valueOf para pasar su valor a tipo Genero)
+		libro2.setGenero(Genero.valueOf(genero));
+
+		// llamo a la funcion que muestra los valores de los atributos del objeto con el
+		// que se la llama (libro)
+		System.out.println(libro.toString());
+
+		// llamo a la funcion que muestra los valores de los atributos del objeto con el
+		// que se la llama (libro2)
+		System.out.println(libro2.toString());
+
 		// cierro escaner
 		dogma.close();
 	}

@@ -17,7 +17,7 @@ public class CuentaCorriente {
 
 	/**
 	 * enumerado que guardara constantes como posibles valores para variable tipo
-	 * CuentaCorriente (cada una seria un objeto)
+	 * CuentaCorriente (cada variable seria un objeto)
 	 */
 	enum Sexo {
 		FEMENINO, MASCULINO
