@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
 
+	//LOS ERRORES SE DEEBN A CAMB
 	public static void main(String[] args) {
 
 		int opcion = 0;// guardara la opcion seleccionada por el usuario

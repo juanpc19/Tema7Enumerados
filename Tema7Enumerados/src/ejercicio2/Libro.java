@@ -17,6 +17,34 @@ public class Libro {
 	int ejemplaresPrestados;// atributo que guardara cantidad de ejemplares prestados
 
 	/**
+	 * enumerado que guardara constantes como posibles valores para variable tipo
+	 * Genero (cada una seria un objeto)
+	 */
+	enum Genero {
+		NARRATIVO, LÍRICO, DRAMÁMATICO, DIDÁCTICO, POÉTICO
+	}
+
+	Genero genero; // atributo genero de tipo Genero guardara genero del libro
+
+	/**
+	 * getter de atributo genero
+	 * 
+	 * @return genero devolvera valor actual de atributo genero
+	 */
+	public Genero getGenero() {
+		return genero;
+	}
+
+	/**
+	 * setter de atributo genero
+	 * 
+	 * @param genero contendra valor a asignar a atributo genero
+	 */
+	public void setGenero(Genero genero) {
+		this.genero = genero;
+	}
+
+	/**
 	 * constructor por defecto en el que inicializo el valor del atributo
 	 * ejemplaresDisponibles a 0 porque es final y necesito hacerlo para evitar
 	 * error de compilacion, aunque cada objeto podra tener un valor de
@@ -29,7 +57,8 @@ public class Libro {
 	}
 
 	/**
-	 * constructor con 4 parametros de entrada
+	 * 
+	 * constructor con 5 parametros de entrada
 	 * 
 	 * @param titulo                proovera valor para el titulo del libro
 	 * @param autor                 proovera valor para guardar en autor del libro
@@ -37,12 +66,14 @@ public class Libro {
 	 *                              de libro ejemplaresDisponibles
 	 * @param ejemplaresPrestados   proovera valor para guardar cantidad prestada
 	 *                              del libro ejemplaresPrestados
+	 * @param genero                proovera valor para el el sexo del titular
 	 */
-	public Libro(String titulo, String autor, int ejemplaresDisponibles, int ejemplaresPrestados) {
+	public Libro(String titulo, String autor, int ejemplaresDisponibles, int ejemplaresPrestados, Genero genero) {
 
 		this.titulo = titulo;
 		this.autor = autor;
 		this.ejemplaresDisponibles = ejemplaresDisponibles;
+		this.ejemplaresPrestados = ejemplaresPrestados;
 		this.ejemplaresPrestados = ejemplaresPrestados;
 	}
 
@@ -84,4 +115,13 @@ public class Libro {
 		return devolver;
 	}
 
+	public String toString() {
+
+		String datosLibro = "";
+
+		datosLibro = "Titulo:" + titulo + " " + "autor:" + autor + " " + "ejemplaresDisponibles:" + ejemplaresDisponibles
+				+ " " + "ejemplaresPrestados:" + ejemplaresPrestados + " " + "genero:" + genero;
+
+		return datosLibro;
+	}
 }
