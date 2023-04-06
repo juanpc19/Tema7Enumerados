@@ -9,13 +9,21 @@ package ejercicio4poo2;
  */
 public class Disco {
 
+	/**
+	 * enumerado que guardara constantes como posibles valores para variable tipo
+	 * Genero (cada variable seria un objeto)
+	 */
+	enum Genero {
+		ROCK, POP, ELECTRÓNICA, REGGAETON
+	}
+
 	private String codigo;// atributo que guardara un codigo unico asociado a un disco
 
 	private String autor;// atributo que guardara el autor de cada disco
 
 	private String titulo;// atributo que guardara el titulo de cada disco
 
-	private String genero;// atributo que guardara el genero de cada disco
+	private Genero genero;// atributo genero de tipo Genero guardara genero del libro
 
 	private int duracion;// atributo que guardara la duracion de cada disco
 
@@ -42,7 +50,9 @@ public class Disco {
 		this.codigo = codigo;
 		this.autor = autor;
 		this.titulo = titulo;
-		this.genero = genero;
+		// aplico valueOf a genero para pasarlo a tipo enum y poder pasarlo como valor
+		// valido a Genero
+		this.genero = Genero.valueOf(genero);
 		this.duracion = duracion;
 	}
 
@@ -119,17 +129,17 @@ public class Disco {
 	 * 
 	 * @return genero devolvera valor actual de atributo genero
 	 */
-	public String getGenero() {
+	public Genero getGenero() {
 		return genero;
 	}
 
 	/**
 	 * setter de atributo genero
 	 * 
-	 * @param genero contendra valor a asignar a atributo genero
+	 * @param genero contendra valor a a asignar a atributo genero
 	 */
 	public void setGenero(String genero) {
-		this.genero = genero;
+		this.genero = Genero.valueOf(genero);
 	}
 
 	/**
@@ -158,8 +168,8 @@ public class Disco {
 	 */
 	@Override
 	public String toString() {
-		return "Disco [codigo=" + codigo + ", autor=" + autor + ", titulo=" + titulo + ", genero=" + genero
-				+ ", duracion=" + duracion + "]";
+		return "Disco Codigo: " + codigo + ", autor: " + autor + ", titulo: " + titulo + ", genero: " + genero
+				+ ", duracion: " + duracion;
 	}
 
 }

@@ -55,6 +55,8 @@ public class Main {
 		// constructor para darle valor a sus atributos con los argumentos recogidos del
 		// usuario con anterioridad
 		CuentaCorriente cuenta = new CuentaCorriente(dni, nombre, saldo, sexo);
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// hago lo mismo para siguiente objeto (cuenta2)
 		System.out.println("Introduzca DNI del titular de la cuenta: ");
@@ -87,6 +89,8 @@ public class Main {
 		// llamo a la funcion que muestra los valores de los atributos del objeto con el
 		// que se la llama (cuenta2)
 		cuenta2.mostrarInformacion();
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// solicito nuevo valor para nombre a usuario
 		System.out.println("Introduzca nuevo nombre del titular de la cuenta: ");
@@ -108,6 +112,8 @@ public class Main {
 		// uso objeto cuenta para llamar a su setter de sexo y le paso sexo como
 		// argumento pasando su valor a tipo Sexo con valueOf
 		cuenta.setSexo(Sexo.valueOf(sexo));
+		
+		/////////////////////////////////////////////////////////////////////////////////////////////////
 
 		// solicito nuevo valor para nombre a usuario
 		System.out.println("Introduzca nuevo nombre del titular de la cuenta: ");

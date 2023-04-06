@@ -52,6 +52,7 @@ public class Main {
 
 			// recojo valor de usuario con escaner y lo asigno a seleccionUsuario
 			seleccionUsuario = dogma.nextInt();
+			dogma.nextLine();
 
 			// hago switch de seleccionUsuario
 			switch (seleccionUsuario) {
@@ -63,9 +64,9 @@ public class Main {
 				for (int i = 0; i < disc.length; i++) {
 
 					// imprimiendo por pantalla los objetos del array que contengan un codigo
-					// diferente a "LIBRE", compruebo cuales comparando el getter de codigo con la
-					// cadena "LIBRE" y le indico al equals que sea un no equals con la exclamacion
-					// antes de disc
+					// diferente a "LIBRE" con uso del metodo toString, compruebo cuales comparando
+					// el getter de codigo con lacadena "LIBRE" y le indico al equals que sea un no
+					// equals con la exclamacion antes de disc
 					if (!disc[i].getCodigo().equals("LIBRE")) {
 						System.out.println(disc[i]);
 					}
@@ -84,8 +85,9 @@ public class Main {
 					// si la posicion actual contiene un codigo con valor igual a "LIBRE" procedo
 					// solicitar datos para "crear" el disco
 					if (disc[posicion].getCodigo().equals("LIBRE")) {
-						// aumento contador en +1
-						contador++;
+						// doy a contador valor de posicion+1 (codigo sera igual a posicion en
+						// disquetera del 1 al 10 y posicion en array del 0 al 9 por eso el +1)
+						contador = posicion + 1;
 						// le doy al setter de codigo del objeto en posicion actual el valor de
 						// contador, uso Integer.toString para pasar contador de int a String
 						disc[posicion].setCodigo(Integer.toString(contador));
@@ -93,21 +95,22 @@ public class Main {
 						// solicito valor para autor al usuario
 						System.out.println("Introduzca autor del disco");
 						// recojo valor con escaner y lo asigno a autor
-						autor = dogma.next();
+						autor = dogma.nextLine();
+
 						// le doy al setter de autor del objeto en posicion actual el valor de autor
 						disc[posicion].setAutor(autor);
 
 						// solicito valor para titulo al usuario
 						System.out.println("Introduzca titulo del disco");
 						// recojo valor con escaner y lo asigno a titulo
-						titulo = dogma.next();
+						titulo = dogma.nextLine();
 						// le doy al setter de titulo del objeto en posicion actual el valor de titulo
 						disc[posicion].setTitulo(titulo);
 
 						// solicito valor para genero al usuario
 						System.out.println("Introduzca genero del disco");
 						// recojo valor con escaner y lo asigno a genero
-						genero = dogma.next();
+						genero = dogma.nextLine();
 						// le doy al setter de genero del objeto en posicion actual el valor de genero
 						disc[posicion].setGenero(genero);
 
@@ -133,7 +136,7 @@ public class Main {
 				// solicito al usuario el codigo del disco a modificar
 				System.out.println("Introduzca el codigo del disco que desea modificar del 1 al 10: ");
 				// recojo valor con escaner y lo asigno a discoModificar
-				discoModificar = dogma.next();
+				discoModificar = dogma.nextLine();
 
 				// doy a posicion valor 0 para reiniciarla por si ya ha sido usada
 				posicion = 0;
@@ -149,21 +152,21 @@ public class Main {
 						// solicito valor para autor al usuario
 						System.out.println("Introduzca autor del disco");
 						// recojo valor con escaner y lo asigno a autor
-						autor = dogma.next();
+						autor = dogma.nextLine();
 						// le doy al setter de autor del objeto en posicion actual el valor de autor
 						disc[posicion].setAutor(autor);
 
 						// solicito valor para titulo al usuario
 						System.out.println("Introduzca titulo del disco");
 						// recojo valor con escaner y lo asigno a titulo
-						titulo = dogma.next();
+						titulo = dogma.nextLine();
 						// le doy al setter de titulo del objeto en posicion actual el valor de titulo
 						disc[posicion].setTitulo(titulo);
 
 						// solicito valor para genero al usuario
 						System.out.println("Introduzca genero del disco");
 						// recojo valor con escaner y lo asigno a genero
-						genero = dogma.next();
+						genero = dogma.nextLine();
 						// le doy al setter de genero del objeto en posicion actual el valor de genero
 						disc[posicion].setGenero(genero);
 
@@ -190,7 +193,7 @@ public class Main {
 				// solicito al usuario el codigo del disco a modificar
 				System.out.println("Introduzca el codigo del disco que desea borrar del 1 al 10: ");
 				// recojo valor con escaner y lo asigno a discoModificar
-				discoModificar = dogma.next();
+				discoModificar = dogma.nextLine();
 
 				// doy a posicion valor 0 para reiniciarla por si ya ha sido usada
 				posicion = 0;
@@ -201,9 +204,6 @@ public class Main {
 
 					// si la posicion actual contiene un codigo con valor igual discoModificar
 					if (disc[posicion].getCodigo().equals(discoModificar)) {
-						// reduzco valor de contador en -1
-						contador--;
-
 						// le doy al setter de codigo del objeto en posicion actual valor igual a
 						// "LIBRE"
 						disc[posicion].setCodigo("LIBRE");

@@ -24,7 +24,7 @@ public class Libro {
 		NARRATIVO, LÍRICO, DRAMÁMATICO, DIDÁCTICO, POÉTICO
 	}
 
-	Genero genero; // atributo genero de tipo Genero guardara genero del libro
+	private Genero genero; // atributo genero de tipo Genero guardara genero del libro
 
 	/**
 	 * getter de atributo genero

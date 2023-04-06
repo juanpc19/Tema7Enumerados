@@ -18,34 +18,77 @@ public class Articulo {
 	private int cuantosQuedan;// atributo que contiene la cantidad restante del articulo
 
 	/**
-	 * constructor con 3 parametros de entrada
+	 * enumerado que guardara constantes como posibles valores para variable tipo
+	 * Departamento (cada variable seria un objeto)
+	 */
+	enum Departamento {
+		ELECTRÓNICA, ALIMENTACIÓN, DROGUERÍA
+	}
+
+	/**
+	 * 
+	 */
+	private Departamento departamento;// atributo departamento de tipo Departamento guardara departamento del libro
+
+	/**
+	 * getter de atributo genero
+	 * 
+	 * @return departamento devolvera valor actual de atributo departamento
+	 */
+	public Departamento getDepartamento() {
+		return departamento;
+	}
+
+	/**
+	 * setter de atributo genero
+	 * 
+	 * @param departamento contendra valor a asignar a atributo departamento
+	 */
+	public void setDepartamento(Departamento departamento) {
+		// hago un for each que recorra los valores del enumerado Departamento guardando
+		// el valor actual en d
+		for (Departamento d : Departamento.values()) {
+			// si d es igual a parametro de entrada departamento
+			if (d.equals(departamento)) {
+				// doy a atributo departamento valor de parametro de entrada departamento
+				this.departamento = departamento;
+			}
+		}
+	}
+
+	/**
+	 * constructor con 4 parametros de entrada
 	 * 
 	 * @param nombre        contendra valor que se asignara a atributo nombre
 	 * @param precio        contendra valor que se asignara a atributo precio
 	 * @param cuantosQuedan contendra valor que se asignara a atributo cuantosQuedan
+	 * @param departamento  contendra valor que se asignara a atributo departamento
 	 */
-	public Articulo(String nombre, double precio, int cuantosQuedan) {
+	public Articulo(String nombre, double precio, int cuantosQuedan, Departamento departamento) {
 		super();
 		// doy a atributo nombre valor de parametro de entrada nombre
 		// si nombre no esta vacio y no es null
 		if (!nombre.isEmpty() && nombre != null) {
 			this.nombre = nombre;
-		} else {
-			System.out.println("Nombre introducido no valido.");
-		}
+		} 
 		// doy a atributo precio valor de parametro de entrada precio
 		// si precio mayor a 0
 		if (precio > 0) {
 			this.precio = precio;
-		} else {
-			System.out.println("Precio introducido no valido.");
-		}
+		} 
 		// doy a atributo cuantosQuedan valor de parametro de entrada cuantosQuedan
 		// si quedan 0 o mas
 		if (cuantosQuedan >= 0) {
 			this.cuantosQuedan = cuantosQuedan;
-		} else {
-			System.out.println("cantidad introducida no valido.");
+		} 
+		// hago un for each que recorra los valores del enumerado Departamento guardando
+		// el valor actual en d
+		for (Departamento d : Departamento.values()) {
+			// si d es igual a parametro de entrada departamento
+			if (d.equals(departamento)) {
+				// doy a atributo departamento valor de parametro de entrada departamento
+				this.departamento = departamento;
+			}
 		}
 	}
 
@@ -53,8 +96,8 @@ public class Articulo {
 	 * funcion que imprimira por pantalla los valores de los atributos del objeto
 	 * con el que se llama a la funcion
 	 */
-	void imprimir() {
-		System.out.println(nombre + " " + precio + " " + cuantosQuedan);
+	public void imprimir() {
+		System.out.println(nombre + " " + precio + " " + cuantosQuedan + " " + departamento);
 	}
 
 	/**
@@ -84,8 +127,8 @@ public class Articulo {
 
 		double pvp = getPVP();// declaro variable que guardara valor de pvp y le doy valor devuelto por
 								// funcion getPVP
-		
-		// aplico el descuento al pvp (que ya tiene el iva aplicado) 
+
+		// aplico el descuento al pvp (que ya tiene el iva aplicado)
 		// y guardo el valor obtenido en pvpDescuento
 		pvpDescuento = pvp - getPVP() / 100 * descuento;
 

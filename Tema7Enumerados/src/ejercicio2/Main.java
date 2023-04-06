@@ -16,7 +16,7 @@ public class Main {
 								// constructor
 		String genero = "";// guardara genero para pasar como parametro de entrada al constructor
 		boolean esta = false;// guardara true o false segun este el genero en la lista de enumerados o no,
-								// inicializo a false poruqe compruebo si SI ESTA
+								// inicializo a false porque compruebo si SI ESTA
 
 		// creo escaner y lo nombro dogma
 		Scanner dogma = new Scanner(System.in);
@@ -40,6 +40,8 @@ public class Main {
 		System.out.println("Introduzca numero de ejemplares Prestados del libro:");
 		// recojo valor de usuario con escaner y lo asigno a ejemplaresPrestados
 		ejemplaresPrestados = dogma.nextInt();
+		// hago uso de escaner asi para evitar error al cambiar tipo de lectura
+		// consumiendo la linea
 		dogma.nextLine();
 
 		// solicito genero al usuario
@@ -56,6 +58,7 @@ public class Main {
 				// el genero especificado se encuentra en la lista de enumerados por lo que esta
 				// pasa a ser true
 				esta = true;
+				break;
 			}
 		}
 		// si esta tiene valor false // el genero especificado no se encuentra en la
@@ -93,6 +96,7 @@ public class Main {
 
 			if (g.equals(Genero.valueOf(genero))) {
 				esta = true;
+				break;
 			}
 		}
 		if (esta == false) {
@@ -123,6 +127,7 @@ public class Main {
 				// el genero especificado se encuentra en la lista de enumerados por lo que esta
 				// pasa a ser true
 				esta = true;
+				break;
 			}
 		}
 		// si esta tiene valor false // el genero especificado no se encuentra en la
@@ -152,9 +157,10 @@ public class Main {
 				// el genero especificado se encuentra en la lista de enumerados por lo que esta
 				// pasa a ser true
 				esta = true;
+				break;
 			}
 		}
-		// si esta tiene valor false // el genero especificado no se encuentra en la
+		// si esta tiene valor false el genero especificado no se encuentra en la
 		// lista de enumerados
 		if (esta == false) {
 			// lo comunico al usuario con mensaje de error
